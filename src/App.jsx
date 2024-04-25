@@ -11,7 +11,18 @@ const App = () => {
 
   useEffect(() => {
     (async () => {
-      setCountries(await getCountries());
+      const paises = await getCountries();
+      //ordenar paises por nombre
+      paises.sort((a, b) => {
+        if (a.name.common > b.name.common) {
+          return 1;
+        }
+        if (a.name.common < b.name.common) {
+          return -1;
+        }
+        return 0;
+      });
+      setCountries(paises);
     })();
   }, []);
 
@@ -54,17 +65,15 @@ const App = () => {
 
       {weather && (
         <div>
-          <h2>temperatura: {weather.main.temp}º</h2>
-          <p>Minima: {weather.main.temp_min.toFixed()}°</p>
-          <p>Maxima: {weather.main.temp_max.toFixed()}°</p>
-          <img
-            src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-            alt="weather icon"
-          />
+          <h2>Clima actual {weather.main.temp}º</h2>
+          <p>Minimo: {weather.main.temp_min.toFixed()}°</p>
+          <p>Maximo: {weather.main.temp_max.toFixed()}°</p>
+          
         </div>
       )}
     </>
   );
 };
+
 
 export default App;
