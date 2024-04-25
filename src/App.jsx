@@ -35,6 +35,8 @@ const App = () => {
     e.currentTarget.value &&
     setWeather(await getCityWeather(e.currentTarget.value));
 
+console.log("hola perro malanteo ratoso")
+
   return (
     <>
       <div>
