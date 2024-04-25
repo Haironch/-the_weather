@@ -12,7 +12,7 @@ const App = () => {
   useEffect(() => {
     (async () => {
       const paises = await getCountries();
-      //ordenar paises por nombre
+      //ordenar paises por nombreññ
       paises.sort((a, b) => {
         if (a.name.common > b.name.common) {
           return 1;
